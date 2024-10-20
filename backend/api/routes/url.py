@@ -1,5 +1,5 @@
-import models  # noqa: TCH002
-from api.deps import SessionDep  # noqa: TCH002
+import models
+from api.deps import SessionDep
 from crud import url
 from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import JSONResponse, RedirectResponse
@@ -10,7 +10,7 @@ router = APIRouter()
 
 @router.post(
     "/shrink",
-    status_code=status.HTTP_302_FOUND,
+    status_code=status.HTTP_200_OK,
 )
 async def shrink_long_url(  # noqa: ANN201
     *,
