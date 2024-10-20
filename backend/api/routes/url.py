@@ -1,5 +1,5 @@
-import models
-from api.deps import SessionDep
+import models  # noqa: TCH002
+from api.deps import SessionDep  # noqa: TCH002
 from crud import url
 from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import JSONResponse, RedirectResponse
