@@ -8,6 +8,11 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
+fastapi = {extras = ["standard"], version = "^0.115.2"}
+sqlmodel = "^0.0.22"
+alembic = "^1.13.3"
+psycopg-binary = "^3.2.3"
+sqlalchemy = "^2.0.36"
 
 
 [tool.poetry.group.dev.dependencies]
