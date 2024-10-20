@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI(
-    title="todolist",
+    title="URL Shortener",
 )
 
 app.add_middleware(

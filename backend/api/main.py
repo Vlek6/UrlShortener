@@ -16,4 +16,4 @@ def healthcheck() -> JSONResponse:
 
 
 # Add external routers
-api_router.include_router(url.router, prefix="/url", tags=["url"])
+api_router.include_router(url.router, tags=["url"])
