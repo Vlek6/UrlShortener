@@ -1,3 +1,5 @@
+import hashlib
+
 import models
 from celery import Celery
 from database import get_session
@@ -17,11 +19,11 @@ celery_app.conf.update(
 
 @celery_app.task()
 def shrink_url(input_url: str):  # noqa: ANN201
-    # turn URL into list of ASCII values
-    url_in_asci = [ord(c) for c in input_url]
-    # Shrink using Sqids
-    short_url = sqids.encode(url_in_asci)
-
+    # Shrink using Sqids with tricky hashing for gettin numbers from str
+    url_hash = hashlib.sha256(input_url.encode()).hexdigest()
+    url_hash_num = int(url_hash, 16) % 10000000000
+    url_to_sqids = [url_hash_num]
+    short_url = sqids.encode(url_to_sqids)
     db_obj = models.UrlMapping(
         original_url=input_url,
         short_url=short_url,
