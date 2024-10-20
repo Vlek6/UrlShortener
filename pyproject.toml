@@ -13,6 +13,7 @@ sqlmodel = "^0.0.22"
 alembic = "^1.13.3"
 psycopg-binary = "^3.2.3"
 sqlalchemy = "^2.0.36"
+psycopg2-binary = "^2.9.10"
 
 
 [tool.poetry.group.dev.dependencies]
