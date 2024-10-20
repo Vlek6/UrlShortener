@@ -19,10 +19,3 @@ def get_db_url_with_short_url(
 ) -> models.UrlMapping | None:
     statement = select(models.UrlMapping).where(models.UrlMapping.short_url == url)
     return session.exec(statement).first()
-
-
-def shrink_url(*, input_url: str) -> str:
-    # turn URL into list of ASCII values
-    url_in_asci = [ord(c) for c in input_url]
-    # Shrink using Sqids
-    return sqids.encode(url_in_asci)
