@@ -10,7 +10,7 @@ router = APIRouter()
 
 @router.post(
     "/shrink",
-    status_code=status.HTTP_302_FOUND,
+    status_code=status.HTTP_200_OK,
 )
 async def shrink_long_url(  # noqa: ANN201
     *,
