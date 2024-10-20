@@ -1,9 +1,8 @@
+import models
+from api.deps import SessionDep  # noqa: TCH002
+from crud import url
 from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import RedirectResponse
-
-from backend import models
-from backend.api.deps import SessionDep
-from backend.crud import url
 
 router = APIRouter()
 
