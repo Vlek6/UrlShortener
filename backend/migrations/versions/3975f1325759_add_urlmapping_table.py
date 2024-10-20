@@ -1,7 +1,7 @@
 """Add UrlMapping table
 
 Revision ID: 3975f1325759
-Revises: 
+Revises:
 Create Date: 2024-10-20 14:21:00.027535
 
 """
