@@ -43,3 +43,6 @@ cd url-shortener
 3. Pass your URL to form and click Shorten
 4. If URL was entered before you will see the shortened link below form.
 5. If this is the first time that URL is passed into Shortener, there might appear message that URL is processed. After few seconds try to click once again on the Shorten button (having the same URL in the form) and the shortened version should appear below.
+
+## Troubleshooting
+1. When running on Windows bash scripts may be saved in CRLF mode what makes them unusable for docker. Happily it can be easily changed eg. using VS Code.
