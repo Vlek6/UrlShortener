@@ -1,3 +1,5 @@
+from datetime import datetime, timezone
+
 import models  # noqa: TCH002
 from api.deps import SessionDep  # noqa: TCH002
 from crud import url
@@ -47,4 +49,9 @@ def redirect_to_original_url(*, session: SessionDep, shortened: str):  # noqa: A
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Shortened URL not found",
         )
+    db_obj.last_access = datetime.now(tz=timezone.utc)
+    db_obj.click_count = db_obj.click_count + 1
+    session.add(db_obj)
+    session.commit()
+    session.refresh(db_obj)
     return RedirectResponse(url=db_obj.original_url)
