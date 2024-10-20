@@ -4,8 +4,7 @@
 
 ### Requirements
 
-- Docker
-- Docker Compose
+- Docker (with Compose)
 
 ### Services
 
@@ -22,16 +21,8 @@
 #### Clone the repository:
 
 ```bash
-
 git clone https://github.com/your-username/url-shortener.git
 cd url-shortener
-```
-
-#### Set up environment variables: Create a .env file at the root of the project:
-
-```bash
-
-touch .env
 ```
 
 #### Build and run the services using Docker Compose:
@@ -44,7 +35,7 @@ touch .env
 
 -        API: http://localhost:8000/docs
 -        API (Swagger documentation): http://localhost:8000/docs
--        Frontend: http://localhost:8080 (URL shortening form)
+-        Frontend: http://localhost:3000 (URL shortening form)
 
 ### Using Frontend
 1. To access frontend start service with docker as stated above.
