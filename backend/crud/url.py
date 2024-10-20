@@ -1,9 +1,8 @@
 from __future__ import annotations
 
+import models
 from sqids import Sqids
 from sqlmodel import Session, select
-
-from backend import models
 
 sqids = Sqids()
 

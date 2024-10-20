@@ -1,7 +1,6 @@
+from api.main import api_router
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
-
-from .api.main import api_router
 
 app = FastAPI(
     title="todolist",

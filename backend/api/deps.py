@@ -1,10 +1,9 @@
 from collections.abc import Generator
 from typing import Annotated
 
+from database import engine
 from fastapi import Depends
 from sqlmodel import Session
-
-from backend.database import engine
 
 
 # Dependency for providing database session from the SQLModel session pool
