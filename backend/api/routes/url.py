@@ -1,22 +1,22 @@
-import models
+import models  # noqa: TCH002
 from api.deps import SessionDep  # noqa: TCH002
 from crud import url
 from fastapi import APIRouter, HTTPException, status
-from fastapi.responses import RedirectResponse
+from fastapi.responses import JSONResponse, RedirectResponse
+from worker import shrink_url
 
 router = APIRouter()
 
 
 @router.post(
     "/shrink",
-    response_model=models.UrlMappingPublic,
     status_code=status.HTTP_302_FOUND,
 )
-def shrink_url(
+async def shrink_long_url(  # noqa: ANN201
     *,
     session: SessionDep,
     input_form: models.UrlMappingForm,
-) -> models.UrlMappingPublic:
+):
     input_url = input_form.original_url.strip()
 
     if input_url.startswith("http://"):
@@ -33,15 +33,10 @@ def shrink_url(
     if db_url:
         return db_url
 
-    db_obj = models.UrlMapping(
-        original_url=input_url,
-        short_url=url.shrink_url(input_url=input_url),
+    shrink_url.delay(input_url)
+    return JSONResponse(
+        content={"message": "Your URL is being processed, check again in a while"},
     )
-    session.add(db_obj)
-    session.commit()
-    session.refresh(db_obj)
-
-    return db_obj
 
 
 @router.get("/{shortened}")
