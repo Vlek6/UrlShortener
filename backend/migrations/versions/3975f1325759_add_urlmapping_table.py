@@ -1,19 +1,19 @@
 """Add UrlMapping table
 
-Revision ID: 2eb681f86e06
+Revision ID: 3975f1325759
 Revises:
-Create Date: 2024-10-20 12:16:24.375251
+Create Date: 2024-10-20 14:21:00.027535
 
 """
 
 from typing import Sequence, Union
+
+import sqlalchemy as sa
 import sqlmodel
 from alembic import op
-import sqlalchemy as sa
-
 
 # revision identifiers, used by Alembic.
-revision: str = "2eb681f86e06"
+revision: str = "3975f1325759"
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -27,7 +27,7 @@ def upgrade() -> None:
         sa.Column("original_url", sqlmodel.sql.sqltypes.AutoString(), nullable=False),
         sa.Column("short_url", sqlmodel.sql.sqltypes.AutoString(), nullable=False),
         sa.Column("created_at", sa.DateTime(), nullable=False),
-        sa.Column("last_access", sa.DateTime(), nullable=False),
+        sa.Column("last_access", sa.DateTime(), nullable=True),
         sa.Column("click_count", sa.Integer(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )

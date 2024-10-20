@@ -1,6 +1,8 @@
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
+from backend.api.routes import url
+
 api_router = APIRouter()
 
 
@@ -12,3 +14,7 @@ def root() -> JSONResponse:
 @api_router.get("/healtcheck", status_code=200)
 def healthcheck() -> JSONResponse:
     return JSONResponse(content={"status": "healthy"})
+
+
+# Add external routers
+api_router.include_router(url.router, prefix="/url", tags=["url"])

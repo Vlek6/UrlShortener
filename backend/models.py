@@ -10,5 +10,17 @@ class UrlMapping(SQLModel, table=True):
     original_url: str = Field(index=True)
     short_url: str = Field(index=True, unique=True)
     created_at: datetime = Field(default_factory=datetime.utcnow)
-    last_access: datetime = Field(default=None)
+    last_access: datetime | None = Field(default=None)
     click_count: int = Field(default=0)
+
+
+class UrlMappingPublic(SQLModel):
+    original_url: str
+    short_url: str
+    created_at: datetime
+    last_access: datetime | None = Field(default=None)
+    click_count: int
+
+
+class UrlMappingForm(SQLModel):
+    original_url: str
