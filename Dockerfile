@@ -11,6 +11,5 @@ RUN apt-get update && apt-get install -y \
 RUN pip install poetry
 COPY . .
 
-RUN chmod +x scripts/entrypoint.sh scripts/wait-for-it.sh
+RUN chmod +x ./scripts/entrypoint.sh ./scripts/wait-for-it.sh
 EXPOSE 8000
-ENTRYPOINT ["sh", "./scripts/entrypoint.sh"]
